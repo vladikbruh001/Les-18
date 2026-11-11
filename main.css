@@ -1,0 +1,149 @@
+/* =========================================================
+   LES 18 - MOBILE FIRST
+   Eerst de opmaak voor mobiel; daarna de mediaquery voor pc.
+   ========================================================= */
+
+* { box-sizing: border-box; }
+/*Zodat padding en border geen extra breidte geven*/
+
+body {
+    margin: 0;
+    background: #f5f6f2;
+    color: #263b3b;
+    font-family: 'Pirata One', Arial, sans-serif;
+    line-height: 1.6; /*Beter voor klenere tekst */
+}
+
+/* HEADER - Bruinisse en achtergrond*/
+.site-header {
+    min-height: 330px;
+    padding: 55px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-image:
+        linear-gradient(rgba(11, 41, 53, 0.39), rgba(11, 41, 53, 0.66)), /*past beter voor de  kleuren*/
+        url("bruinisse.jpg");
+    background-size: cover;
+    background-position: center 60%;
+}
+
+
+h1, h2, h3 { margin-top: 0; }
+
+h1 {
+    margin-bottom: 0px;
+    font-family: 'Pirata One', Georgia, serif;
+font-size: clamp(55px, 9vw, 95px);
+    /*Advies van ChatGPT anders werdt tekst te klein of te groot op telefoon*/
+}
+
+/* Hier door staan kolommen naast elkaar in PC versie natuurlijk */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* MOBIEL: beide delen hebben een breedte van 100%. */
+.col-2, .col-9 {
+    width: 100%;
+    min-width: 0;
+    padding: 30px 25px 35px;
+}
+
+.col-2 { background: #fae7db; }
+.col-9 { background: #e3f0e4; }
+
+h2 {
+    margin-bottom: 15px;
+    font-family: 'Pirata One', Georgia, serif;
+    font-size: 30px;
+    line-height: 1.25;
+}
+
+.feitenlijst {
+    margin: 0px;
+    padding-left: 20px;
+    font-size: 90%;
+}
+
+.feitenlijst li { padding-left: 3px; margin-bottom: 14px; }
+.feitenlijst li::marker { color: #bd8665; }
+
+.intro {
+    margin: 0 0 25px;
+    color: #536b64;
+    font-size: 90%;
+}
+
+/* Twee afzonderlijke divs met daarin elk een article. */
+.attractie { margin-top: 16px; }
+
+.attractie-inhoud {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 105px; /* Maakt 2 kolomen 1 met tekst 1 met foto. */
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #d2e3d5;
+    border-radius: 13px;
+    background: rgba(255,255,255,.86);
+}
+
+h3 {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.attractie-tekst p {
+    margin: 0;
+    font-size: 85%;
+    line-height: 1.60;
+}
+
+/* Afbeelding rechts van de tekst. */
+.attractie-inhoud img {
+    width: 100%;
+    height: 120px;
+    border-radius: 9px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 100px;
+    padding: 25px 18px;
+    background: #fcf0ce;
+    text-align: center;
+    font-size: 80%;
+    color: #786c4e;
+}
+
+/* =========================================================
+   DESKTOP: vanaf 768px een 12-kolomen.
+   .col-2 = 2/12 = 16,67%; .col-9 = 9/12 = 75%.
+   De laatste 1/12 = 8,33% blijft leeg (zoals in de voorbeeld).
+   ========================================================= */
+@media (min-width: 768px) {
+    .site-header { min-height: 370px; }
+    .col-2 { width: 16.6667%; padding: 30px 15px; }
+    .col-9 { width: 75%; padding: 35px 35px 45px; }
+    .attractie-inhoud {
+        grid-template-columns: minmax(0, 1fr) 170px;
+        gap: 24px;
+        padding: 20px;
+    }
+    .attractie-inhoud img { height: 138px; }
+    .site-footer { flex-direction: row; justify-content: space-between; padding: 30px 35px; }
+}
+
+/* met     font-size: 90% of px; had ik beetje geexperementeerd wist niet wat beter zou zijn*/
+/* Tekst stijl is niet best leesbaar maar ik vondt hem apart zeker omdat het maar opdracht is ik dacht zou leuk zijn om te gebruiken*/
